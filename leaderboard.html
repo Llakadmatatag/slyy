@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - BetSlyy</title>
+    <meta name="description" content="Check out the top players and their rankings on BetSlyy. Compete to climb the leaderboard and win amazing prizes!">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=M+PLUS+1p:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="BetSlyy Logo">
+            </a>
+            
+            <!-- Hamburger Menu Toggle -->
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Overlay untuk menutup menu -->
+            <div class="overlay"></div>
+            
+            <!-- Navigasi Menu -->
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="leaderboard.html" class="active">Leaderboard</a></li>
+                    <li><a href="socials.html">Socials</a></li>
+                    <li class="discord-btn-container">
+                        <a href="https://discord.gg/TKjmzVsZxG" class="btn-discord" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-discord"></i>
+                            <span>Join the Squad</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Leaderboard Content -->
+    <section class="leaderboard-section">
+        <div class="container">
+            <div class="leaderboard-container">
+                <!-- Main Leaderboard Title -->
+                <div class="leaderboard-hero">
+                    <div class="leaderboard-header">
+                        <h1>Leaderboards</h1>
+                        <p>Compete with the best and climb to the top of the leaderboard to win amazing prizes!</p>
+                        <div class="game-tabs">
+                            <button class="game-tab active" data-game="rust-magic">
+                                <img src="images/rust-magic-logo.webp" alt="Rust Magic" class="game-logo">
+                                <div class="game-info">
+                                    <span class="game-title">Rust Magic</span>
+                                </div>
+                            </button>
+                            <button class="game-tab" data-game="upgrader">
+                                <img src="images/upgrader-logo.webp" alt="Upgrader" class="game-logo">
+                                <div class="game-info">
+                                    <span class="game-title">Upgrader</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rust Magic Leaderboard (Default Visible) -->
+                <div id="rust-magic-leaderboard" class="game-leaderboard">
+                    <div class="game-leaderboard-title">
+                        <h3><i class="fas fa-dice-d20"></i> Rust Magic Leaderboard</h3>
+                        <span class="prize-pool">Prize Pool: $400</span>
+                    </div>
+                    
+                    <!-- Bonus Note -->
+                    <div class="bonus-note">
+                        <i class="fas fa-gift"></i>
+                        <p>Wager 5,000 or more at anytime on the leaderboard & receive a <strong>$50 ONE TIME GUARANTEED BONUS!</strong></p>
+                    </div>
+                    
+                    <!-- Countdown Timer -->
+                    <div class="leaderboard-timer">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Resets in: <span id="countdown">14d 6h 45m</span></span>
+                    </div>
+                    <!-- Podium -->
+                    <div class="podium">
+                        <!-- 2nd Place -->
+                        <div class="podium-item second-place">
+                            <div class="podium-rank">2</div>
+                            <div class="player">
+                                <div class="player-avatar">
+                                    <img src="images/default-avatar.png" alt="Player">
+                                </div>
+                                <div class="player-info">
+                                    <h3 class="player-name">-</h3>
+                                    <div class="stats">
+                                        <div class="wagered">
+                                            <span>-</span>
+                                            <img src="images/rust-magic-coin.svg" alt="Wagered" class="coin-icon">
+                                        </div>
+                                        <div class="prize">
+                                            <span>100</span>
+                                            <img src="images/rust-magic-coin.svg" alt="Prize" class="coin-icon">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 1st Place -->
+                        <div class="podium-item first-place">
+                            <div class="crown">
+                                <i class="fas fa-crown"></i>
+                            </div>
+                            <div class="podium-rank">1</div>
+                            <div class="player">
+                                <div class="player-avatar">
+                                    <img src="images/default-avatar.png" alt="Player">
+                                </div>
+                                <div class="player-info">
+                                    <h3 class="player-name">-</h3>
+                                    <div class="stats">
+                                        <div class="wagered">
+                                            <span>-</span>
+                                            <img src="images/rust-magic-coin.svg" alt="Wagered" class="coin-icon">
+                                        </div>
+                                        <div class="prize">
+                                            <span>200</span>
+                                            <img src="images/rust-magic-coin.svg" alt="Prize" class="coin-icon">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 3rd Place -->
+                        <div class="podium-item third-place">
+                            <div class="podium-rank">3</div>
+                            <div class="player">
+                                <div class="player-avatar">
+                                    <img src="images/default-avatar.png" alt="Player">
+                                </div>
+                                <div class="player-info">
+                                    <h3 class="player-name">-</h3>
+                                    <div class="stats">
+                                        <div class="wagered">
+                                            <span>-</span>
+                                            <img src="images/rust-magic-coin.svg" alt="Wagered" class="coin-icon">
+                                        </div>
+                                        <div class="prize">
+                                            <span>50</span>
+                                            <img src="images/rust-magic-coin.svg" alt="Prize" class="coin-icon">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Leaderboard Table -->
+                    <div class="leaderboard-table">
+                        <div class="table-header">
+                            <div class="rank-header">Rank</div>
+                            <div class="player-header">Username</div>
+                            <div class="wagered-header">Wagered</div>
+                            <div class="prize-header">Prize</div>
+                        </div>
+                        
+                        <div class="table-body" id="leaderboard-body">
+                            <!-- Rows will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Upgrader Leaderboard (Hidden by default) -->
+                <div id="upgrader-leaderboard" class="game-leaderboard" style="display: none;">
+                    <div class="game-leaderboard-title">
+                        <h3><i class="fas fa-level-up-alt"></i> Upgrader Leaderboard</h3>
+                        <span class="prize-pool">Prize Pool: Coming Soon</span>
+                    </div>
+                    <div class="no-leaderboard-message">
+                        <i class="fas fa-info-circle"></i>
+                        <h3>Leaderboard Not Available</h3>
+                        <p>There is no active leaderboard for Upgrader at the moment.</p>
+                        <p>Check back later for updates!</p>
+                    </div>
+                </div>
+
+                </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="responsible-gambling">
+                <h4>18+ | Responsible Gambling</h4>
+                <p>We do not take responsibility for any losses from gambling in casino and betting sites which are linked or promoted on our website(s). As a player, you are responsible for your bets.</p>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo" style="margin-bottom: 1.5rem;">
+                        <img src="images/logo.webp" alt="BetSlyy Logo" style="height: 50px; width: auto;">
+                    </div>
+                    <p>Wager Like A Wizard, Win Like A Legend!</p>
+                    <div class="social-icons">
+                        <a href="https://x.com/SlyySquadOnKick" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://discord.gg/TKjmzVsZxG" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="https://www.tiktok.com/@slyysquad" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@SlyySquad" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://kick.com/slyysquad" target="_blank" rel="noopener noreferrer" aria-label="Kick"><img src="images/kick-logo.webp" alt="Kick" style="width: 24px; height: 24px; object-fit: contain; vertical-align: middle;"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="socials.html">Socials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="legal">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                    <div style="margin-top: 2rem;">
+                        <p>Designed by: <a href="https://x.com/Llakadmatatag" target="_blank" rel="noopener noreferrer" style="color: var(--accent5);">@Llakadmatatag</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 BetSlyy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/menu.js"></script>
+    <script src="js/leaderboard.js"></script>
+</body>
+</html>
