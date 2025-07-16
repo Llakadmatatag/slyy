@@ -546,7 +546,7 @@ function updatePodium() {
 function updateCountdown() {
     // Define countdown targets for each game
     const countdownTargets = {
-        'rust-magic': new Date('2025-07-30T06:00:00-04:00'), // Updated to July 30, 2025 06:00 AM EST
+        'rust-magic': new Date('2025-07-31T06:00:00-04:00'), // Updated to July 30, 2025 06:00 AM EST
         'upgrader': new Date('2025-07-27T06:00:00-04:00'), // July 27, 2025 06:00 AM EST
         'csgold': new Date('2025-07-27T06:00:00-04:00') // July 27, 2025 06:00 AM EST
     };
