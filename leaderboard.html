@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard - BetSlyy</title>
+    <meta name="description" content="Check out the top players and their rankings on BetSlyy. Compete to climb the leaderboard and win amazing prizes!">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&family=M+PLUS+1p:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+    <style>
+        .fullscreen-rain-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            pointer-events: none;
+        }
+        .rain-canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="images/logo.webp" alt="BetSlyy Logo">
+            </a>
+            
+            <!-- Hamburger Menu Toggle -->
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <!-- Overlay untuk menutup menu -->
+            <div class="overlay"></div>
+            
+            <!-- Navigation Menu -->
+            <nav class="nav-menu">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="leaderboard.html" class="active"><i class="fas fa-trophy"></i> Leaderboard</a></li>
+                    <li><a href="socials.html"><i class="fas fa-share-alt"></i> Socials</a></li>
+                    <li class="discord-btn-container">
+                        <a href="https://discord.gg/TKjmzVsZxG" class="btn-discord" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-discord"></i>
+                            <span>Join the Squad</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Leaderboard Content -->
+    <section class="leaderboard-hero">
+        <div class="container">
+            <!-- Main Leaderboard Header -->
+            <div class="leaderboard-header">
+                <h1>Leaderboards</h1>
+                <p>Compete & wager on the sites below and climb to the top of the leaderboard to win amazing prizes!</p>
+                <div class="game-tabs">
+                    <button class="game-tab active" data-game="rust-magic">
+                        <img src="images/rust-magic-logo.webp" alt="Rust Magic" class="game-logo">
+                        <div class="game-info">
+                            <span class="game-title">Rust Magic</span>
+                        </div>
+                    </button>
+                    <button class="game-tab" data-game="upgrader">
+                        <img src="images/upgrader-logo.webp" alt="Upgrader" class="game-logo">
+                        <div class="game-info">
+                            <span class="game-title">Upgrader</span>
+                        </div>
+                    </button>                    
+                </div>
+            </div>
+            
+            <div class="leaderboard-container">
+                <!-- Fullscreen Rain Container for Rust Magic -->
+                <div class="fullscreen-rain-container">
+                    <canvas id="rust-magic-rain" class="rain-canvas"></canvas>
+                </div>
+                <!-- Rust Magic Leaderboard (Default Visible) -->
+                <div id="rust-magic-leaderboard" class="game-leaderboard active">
+                    <!-- Rust Magic Decorative Images -->
+                    <div class="decorative-images rust-magic-decor">
+                        <!-- Kelompok Kiri - Formasi Melengkung -->
+                        <!-- Kiri Atas - Sedang (Paling Luar) -->
+                        <div class="decorative-image" style="top: 10%; left: -15%; transform: rotate(-20deg); width: 180px; height: 180px; z-index: 1;">
+                            <img src="images/rust-magic-decor3.webp" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kiri Tengah Atas - Kecil (Sedikit Ke Dalam) -->
+                        <div class="decorative-image" style="top: 25%; left: -12%; transform: rotate(-30deg); width: 180px; height: 180px; z-index: 0;">
+                            <img src="images/rust-magic-decor5.png" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kiri Tengah - Besar (Pusat Kurva) -->
+                        <div class="decorative-image" style="top: 50%; left: -8%; transform: rotate(-15deg); width: 180px; height: 180px; z-index: 3;">
+                            <img src="images/rust-magic-decor1.webp" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kiri Tengah Bawah - Sedang (Sedikit Ke Dalam) -->
+                        <div class="decorative-image" style="top: 75%; left: -12%; transform: rotate(10deg); width: 180px; height: 180px; z-index: 1;">
+                            <img src="images/rust-magic-decor7.png" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kiri Bawah - Kecil (Paling Luar) -->
+                        <div class="decorative-image" style="top: 90%; left: -15%; transform: rotate(5deg); width: 180px; height: 180px; z-index: 0;">
+                            <img src="images/rust-magic-decor9.webp" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+
+                        <!-- Kelompok Kanan - Formasi Melengkung -->
+                        <!-- Kanan Atas - Sedang (Paling Luar) -->
+                        <div class="decorative-image" style="top: 10%; right: -15%; transform: rotate(20deg); width: 180px; height: 180px; z-index: 1;">
+                            <img src="images/rust-magic-decor8.png" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kanan Tengah Atas - Kecil (Sedikit Ke Dalam) -->
+                        <div class="decorative-image" style="top: 25%; right: -12%; transform: rotate(35deg); width: 180px; height: 180px; z-index: 0;">
+                            <img src="images/rust-magic-decor4.webp" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kanan Tengah - Besar (Pusat Kurva) -->
+                        <div class="decorative-image" style="top: 50%; right: -8%; transform: rotate(15deg); width: 180px; height: 180px; z-index: 3;">
+                            <img src="images/rust-magic-decor10.png" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kanan Tengah Bawah - Sedang (Sedikit Ke Dalam) -->
+                        <div class="decorative-image" style="top: 75%; right: -12%; transform: rotate(-10deg); width: 180px; height: 180px; z-index: 1;">
+                            <img src="images/rust-magic-decor2.webp" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kanan Bawah - Kecil (Paling Luar) -->
+                        <div class="decorative-image" style="top: 90%; right: -15%; transform: rotate(-5deg); width: 180px; height: 180px; z-index: 0;">
+                            <img src="images/rust-magic-decor6.png" alt="Rust Magic Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                    </div>
+                    <div class="game-leaderboard-title">
+                        <h3><i class="fas fa-dice-d20"></i> Rust Magic Bi-Weekly Leaderboard</h3>
+                        <span class="prize-pool">Prize Pool: $1,250</span>
+                    </div>
+                    
+                    <!-- Bonus Note -->
+                    <div class="bonus-note">
+                        <i class="fas fa-gift"></i>
+                        <p><strong>Guaranteed Bonus: </strong>Wager 5000+ at anytime on the leaderboard & receive <strong>A $25 TIP + FREE BATTLE!!!</strong></p>
+                    </div>
+                    
+                    <!-- Countdown Timer -->
+                    <div class="countdown-container">
+                        <div class="countdown-header">
+                            <i class="fas fa-clock"></i>
+                            <h4>Time Remaining</h4>
+                        </div>
+                        <div class="countdown-timer">
+                            <div class="countdown-item">
+                                <span class="countdown-value days">00</span>
+                                <span class="countdown-label">Days</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-value hours">00</span>
+                                <span class="countdown-label">Hours</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-value minutes">00</span>
+                                <span class="countdown-label">Minutes</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-value seconds">00</span>
+                                <span class="countdown-label">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="prize-note">
+                        <p><small> You must be active on the code when leaderboard ends - All prizes are given in Rust Magic Credits* - updates every 30 minutes</small></p>
+                    </div>
+                    <!-- Podium -->
+                    <div class="podium">
+                        <!-- 1st Place -->
+                        <div class="podium-item first-place">
+                            <div class="rank-container">
+                                <i class="crown gold fas fa-crown"></i>
+                                <div class="podium-rank">1</div>
+                            </div>
+                            <div class="podium-content">
+                                <div class="player-avatar">
+                                    <img src="images/ava.png" alt="Player" class="avatar-img">
+                                </div>
+                                <div class="player-info">
+                                    <h3 class="player-name">-</h3>
+                                    <div class="stats-stack">
+                                        <div class="stat-item wagered-item">
+                                            <span class="stat-label">Wagered</span>
+                                            <span class="stat-value">-<img src="images/rust-magic-coin.svg" alt="Wagered" class="coin-icon"></span>
+                                        </div>
+                                        <div class="stat-item prize-item">
+                                            <span class="stat-label"><i class="fas fa-trophy"></i></span>
+                                            <span class="stat-value">600<img src="images/rust-magic-coin.svg" alt="Prize" class="coin-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2nd Place -->
+                        <div class="podium-item second-place">
+                            <div class="rank-container">
+                                <i class="crown silver fas fa-crown"></i>
+                                <div class="podium-rank">2</div>
+                            </div>
+                            <div class="podium-content">
+                                <div class="player-avatar">
+                                    <img src="images/ava.png" alt="Player" class="avatar-img">
+                                </div>
+                                <div class="player-info">
+                                    <h3 class="player-name">-</h3>
+                                    <div class="stats-stack">
+                                        <div class="stat-item wagered-item">
+                                            <span class="stat-label">Wagered</span>
+                                            <span class="stat-value">-<img src="images/rust-magic-coin.svg" alt="Wagered" class="coin-icon"></span>
+                                        </div>
+                                        <div class="stat-item prize-item">
+                                            <span class="stat-label"><i class="fas fa-trophy"></i></span>
+                                            <span class="stat-value">300<img src="images/rust-magic-coin.svg" alt="Prize" class="coin-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 3rd Place -->
+                        <div class="podium-item third-place">
+                            <div class="rank-container">
+                                <i class="crown bronze fas fa-crown"></i>
+                                <div class="podium-rank">3</div>
+                            </div>
+                            <div class="podium-content">
+                                <div class="player-avatar">
+                                    <img src="images/ava.png" alt="Player" class="avatar-img">
+                                </div>
+                                <div class="player-info">
+                                    <h3 class="player-name">-</h3>
+                                    <div class="stats-stack">
+                                        <div class="stat-item wagered-item">
+                                            <span class="stat-label">Wagered</span>
+                                            <span class="stat-value">-<img src="images/rust-magic-coin.svg" alt="Wagered" class="coin-icon"></span>
+                                        </div>
+                                        <div class="stat-item prize-item">
+                                            <span class="stat-label"><i class="fas fa-trophy"></i></span>
+                                            <span class="stat-value">150<img src="images/rust-magic-coin.svg" alt="Prize" class="coin-icon"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Search Bar -->
+                    <div class="search-container">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search username...">
+                            <button id="clearSearch" class="clear-btn" title="Clear search">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Leaderboard Table -->
+                    <div class="leaderboard-table">
+                        <div class="table-header">
+                            <div class="rank-header">Rank</div>
+                            <div class="player-header">Username</div>
+                            <div class="wagered-header">Wagered</div>
+                            <div class="prize-header">Prize</div>
+                        </div>
+                        
+                        <div class="table-body" id="leaderboard-body">
+                        <!-- Default rows for rank 4-10 -->
+                        <div class="table-row">
+                            <div class="rank">#4</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#5</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#6</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#7</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#8</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#9</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#10</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                    </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Fullscreen Rain Container for Upgrader -->
+                <div class="fullscreen-rain-container" style="display: none;">
+                    <canvas id="upgrader-rain" class="rain-canvas"></canvas>
+                </div>
+                <!-- Upgrader Leaderboard (Hidden by default) -->
+                <div id="upgrader-leaderboard" class="game-leaderboard">
+                    <!-- Upgrader Decorative Images -->
+                    <div class="decorative-images upgrader-decor">
+                        <!-- Kiri Atas -->
+                        <div class="decorative-image" style="top: 5%; left: -15%; transform: rotate(-20deg); width: 180px; height: 180px; z-index: 1;">
+                            <img src="images/upgrader-decor1.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kiri Tengah Atas -->
+                        <div class="decorative-image" style="top: 25%; left: -12%; transform: rotate(-30deg); width: 180px; height: 180px; z-index: 0;">
+                            <img src="images/upgrader-decor3.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kiri Tengah -->
+                        <div class="decorative-image" style="top: 50%; left: -8%; transform: rotate(-15deg); width: 180px; height: 180px; z-index: 3;">
+                            <img src="images/upgrader-decor5.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kiri Tengah Bawah -->
+                        <div class="decorative-image" style="top: 75%; left: -12%; transform: rotate(10deg); width: 180px; height: 180px; z-index: 1;">
+                            <img src="images/upgrader-decor11.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kiri Bawah -->
+                        <div class="decorative-image" style="top: 90%; left: -15%; transform: rotate(5deg); width: 180px; height: 180px; z-index: 0;">
+                            <img src="images/upgrader-decor9.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+
+                        <!-- Kanan Atas -->
+                        <div class="decorative-image" style="top: 5%; right: -15%; transform: rotate(20deg); width: 180px; height: 180px; z-index: 1;">
+                            <img src="images/upgrader-decor2.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kanan Tengah Atas -->
+                        <div class="decorative-image" style="top: 25%; right: -12%; transform: rotate(35deg); width: 180px; height: 180px; z-index: 0;">
+                            <img src="images/upgrader-decor4.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kanan Tengah -->
+                        <div class="decorative-image" style="top: 50%; right: -8%; transform: rotate(15deg); width: 180px; height: 180px; z-index: 3;">
+                            <img src="images/upgrader-decor6.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kanan Tengah Bawah -->
+                        <div class="decorative-image" style="top: 75%; right: -12%; transform: rotate(-10deg); width: 180px; height: 180px; z-index: 1;">
+                            <img src="images/upgrader-decor8.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                        <!-- Kanan Bawah -->
+                        <div class="decorative-image" style="top: 90%; right: -15%; transform: rotate(-5deg); width: 180px; height: 180px; z-index: 0;">
+                            <img src="images/upgrader-decor10.webp" alt="Upgrader Decoration" class="decor-img" style="width: 100%; height: 100%; object-fit: contain;">
+                        </div>
+                    </div>
+                    <div class="game-leaderboard-title">
+                        <h3><i class="fas fa-level-up-alt"></i> Upgrader Bi-Weekly Leaderboard</h3>
+                        <span class="prize-pool">Prize Pool: $250</span>
+                    </div>
+
+                    <!-- Bonus Note -->
+                    <div class="bonus-note">
+                        <i class="fas fa-gift"></i>
+                        <p><strong>Guaranteed Bonus: </strong>Wager 500+ at anytime on the leaderboard & receive <strong>A $10 TIP + FREE BATTLE!!!</strong></p>
+                    </div>
+
+                    <!-- Countdown Timer -->
+                    <div class="countdown-container">
+                        <div class="countdown-header">
+                            <i class="fas fa-clock"></i>
+                            <h4>Time Remaining</h4>
+                        </div>
+                        <div class="countdown-timer">
+                            <div class="countdown-item">
+                                <span class="countdown-value days">00</span>
+                                <span class="countdown-label">Days</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-value hours">00</span>
+                                <span class="countdown-label">Hours</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-value minutes">00</span>
+                                <span class="countdown-label">Minutes</span>
+                            </div>
+                            <div class="countdown-separator">:</div>
+                            <div class="countdown-item">
+                                <span class="countdown-value seconds">00</span>
+                                <span class="countdown-label">Seconds</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prize Note-->    
+                    <div class="prize-note">
+                        <p><small>You must be active on the code when leaderboard ends - All prizes are given in Upgrader Credits* - Updated every 30 minutes</small></p>
+                    </div>
+
+                    <!--Podium-->
+                    <div class="podium">
+                        <!--First Place-->
+                        <div class="podium-item first-place">
+                            <div class="rank-container">
+                                <i class="crown gold fas fa-crown"></i>
+                                <div class="podium-rank">1</div>
+                            </div>
+                            <div class="podium-content">
+                                <div class="player-avatar">
+                                    <img src="images/ava.png" alt="Player" class="avatar-img">
+                                </div>
+                                <div class="player-info">
+                                    <h3 class="player-name">-</h3>
+                                    <div class="stats-stack">
+                                        <div class="stat-item wagered-item">
+                                            <span class="stat-label">Wagered</span>
+                                            <span class="stat-value">$-<span>
+                                        </div>
+                                        <div class="stat-item prize-item">
+                                            <span class="stat-label"><i class="fas fa-trophy"></i></span>
+                                            <span class="stat-value">$250</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--Second Place-->
+                        <div class="podium-item second-place">
+                            <div class="rank-container">
+                                <i class="crown silver fas fa-crown"></i>
+                                <div class="podium-rank">2</div>
+                            </div>
+                            <div class="podium-content">
+                                <div class="player-avatar">
+                                    <img src="images/ava.png" alt="Player" class="avatar-img">
+                                </div>
+                                <div class="player-info">
+                                    <h3 class="player-name">-</h3>
+                                    <div class="stats-stack">
+                                        <div class="stat-item wagered-item">
+                                            <span class="stat-label">Wagered</span>
+                                            <span class="stat-value">$-</span>
+                                        </div>
+                                        <div class="stat-item prize-item">
+                                            <span class="stat-label"><i class="fas fa-trophy"></i></span>
+                                            <span class="stat-value">$120</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 3rd Place -->
+                        <div class="podium-item third-place">
+                            <div class="rank-container">
+                                <i class="crown bronze fas fa-crown"></i>
+                                <div class="podium-rank">3</div>
+                            </div>
+                            <div class="podium-content">
+                                <div class="player-avatar">
+                                    <img src="images/ava.png" alt="Player" class="avatar-img">
+                                </div>
+                                <div class="player-info">
+                                    <h3 class="player-name">-</h3>
+                                    <div class="stats-stack">
+                                        <div class="stat-item wagered-item">
+                                            <span class="stat-label">Wagered</span>
+                                            <span class="stat-value">$-</span>
+                                        </div>
+                                        <div class="stat-item prize-item">
+                                            <span class="stat-label"><i class="fas fa-trophy"></i></span>
+                                            <span class="stat-value">$65</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                               
+                    <div class="search-container">
+                        <div class="search-box">
+                            <i class="fas fa-search"></i>
+                            <input type="text" id="searchInput" placeholder="Search username...">
+                            <button id="clearSearch" class="clear-btn" title="Clear search">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Leaderboard Table -->
+                    <div class="leaderboard-table">
+                        <div class="table-header">
+                            <div class="rank-header">Rank</div>
+                            <div class="player-header">Username</div>
+                            <div class="wagered-header">Wagered</div>
+                            <div class="prize-header">Prize</div>
+                        </div>
+                        
+                        <div class="table-body" id="leaderboard-body">
+                        <!-- Default rows for rank 4-10 -->
+                        <div class="table-row">
+                            <div class="rank">#4</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">$15</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#5</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">$10</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#6</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#7</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#8</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#9</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                        <div class="table-row">
+                            <div class="rank">#10</div>
+                            <div class="player">-</div>
+                            <div class="wagered">-</div>
+                            <div class="prize">-</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="responsible-gambling">
+                <h4>18+ | Responsible Gambling</h4>
+                <p>We do not take responsibility for any losses from gambling in casino and betting sites which are linked or promoted on our website(s). As a player, you are responsible for your bets.</p>
+            </div>
+            
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo" style="margin-bottom: 1.5rem;">
+                        <img src="images/logo.webp" alt="BetSlyy Logo" style="height: 50px; width: auto;">
+                    </div>
+                    <p>Wager Like A Wizard, Win Like A Legend!</p>
+                    <div class="social-icons">
+                        <a href="https://x.com/SlyySquadOnKick" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://discord.gg/TKjmzVsZxG" target="_blank" rel="noopener noreferrer" aria-label="Discord"><i class="fab fa-discord"></i></a>
+                        <a href="https://www.tiktok.com/@slyysquad" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://www.youtube.com/@SlyySquad" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="https://kick.com/slyysquad" target="_blank" rel="noopener noreferrer" aria-label="Kick"><img src="images/kick-logo.webp" alt="Kick" style="width: 24px; height: 24px; object-fit: contain; vertical-align: middle;"></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="leaderboard.html">Leaderboard</a></li>
+                        <li><a href="socials.html">Socials</a></li>
+                    </ul>
+                </div>
+                
+                <div class="legal">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="terms.html">Terms of Service</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                    <div style="margin-top: 2rem;">
+                        <p>Designed by: <a href="https://x.com/Llakadmatatag" target="_blank" rel="noopener noreferrer" style="color: var(--accent5);">@Llakadmatatag</a></p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 BetSlyy. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/menu.js"></script>
+    <script>
+        // Efek scroll header dengan debounce untuk performa lebih baik
+        let ticking = false;
+        const header = document.querySelector('header');
+        
+        function updateHeader() {
+            const scrollPosition = window.scrollY;
+            if (scrollPosition > 50) {
+                header.classList.add('scrolled');
+                // Efek parallax ringan pada logo
+                const logo = document.querySelector('.logo');
+                const scale = 1 - Math.min(scrollPosition * 0.0005, 0.05);
+                if (logo) logo.style.transform = `scale(${scale})`;
+            } else {
+                header.classList.remove('scrolled');
+                const logo = document.querySelector('.logo');
+                if (logo) logo.style.transform = 'scale(1)';
+            }
+            ticking = false;
+        }
+
+        // Inisialisasi event listener untuk scroll
+        window.addEventListener('scroll', function() {
+            if (!ticking) {
+                window.requestAnimationFrame(updateHeader);
+                ticking = true;
+            }
+        });
+
+        // Inisialisasi header pada load
+        updateHeader();
+
+        // Efek hover pada menu item
+        const menuItems = document.querySelectorAll('.nav-menu a');
+        menuItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.style.transition = 'all 0.3s cubic-bezier(0.25, 0.1, 0.25, 1.5)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.style.transition = 'all 0.3s ease';
+            });
+        });
+
+        // Efek klik pada menu mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (menuToggle && navMenu) {
+            menuToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+            });
+
+            // Tutup menu mobile saat link di-klik
+            const navLinks = document.querySelectorAll('.nav-menu a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menuToggle.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+            });
+        }
+
+        // Efek scroll halus untuk semua link anchor
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if (targetId === '#' || targetId.startsWith('http')) return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+    <script src="js/leaderboard.js"></script>
+    <script src="js/particle-rain.js"></script>
+</body>
+</html>
